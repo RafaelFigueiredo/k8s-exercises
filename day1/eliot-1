@@ -46,3 +46,87 @@
    46  cat /proc/cpuinfo 
    47  ls
    48  history > eliot-1
+   49  cat eliot-1 
+   50  scp eliot-1 ~
+   51  git config --global user.name Rafael
+   52  git config --global user.email rafael.figueiredo91@gmail.com
+   53  ls
+   54  nano eliot-1 
+   55  mkdir k8s
+   56  mkdir k8s/day1
+   57  mv eliot-1 k8s/day1/
+   58  cd k8s/
+   59  git init
+   60  git remote add origin https://github.com/RafaelFigueiredo/k8s-exercises.git
+   61  git add .
+   62  git commit -m "k8s master history"
+   63  git branch
+   64  git checkout -b main
+   65  git push origin main
+   66  clear
+   67  kubectl get nodes
+   68  clear
+   69  kubectl describe nodes
+   70  kubectl describe node
+   71  clear
+   72  kubectl describe node
+   73  kubectl describe node eliot-1
+   74  kubectl get nodes
+   75  kubectl describe node eliot-01
+   76  clear
+   77  kubectl describe node eliot-01
+   78  kubeadm
+   79  kubectl
+   80  kubectl completion
+   81  kubectl completion bash
+   82  apt-get install -y bash-completion
+   83  kubectl completion bash > /etc/bash_completion/kubectl
+   84  kubectl completion bash > /etc/bash_completion.d/kubectl
+   85  source <(kubectl completion bash)
+   86  kubectl get deployments
+   87  kubectl get deployments.apps 
+   88  kubectl get pod
+   89  kubectl get pods -n kube-system
+   90  kubectl get pods -n kube-system -w
+   91  kubectl describe pod weave-net-fglwq
+   92  kubectl describe pod weave-net-gflwq
+   93  kubectl describe pod weave-net-g
+   94  kubectl describe pod weave-net-gflwq
+   95  kubectl describe pod weave-net-gflwq -n kube-system
+   96  kubectl run nginx --image=nginx --dry-run=client
+   97  kubectl run nginx --image=nginx --dry-run=client -o yaml
+   98  kubectl run nginx --image=nginx --dry-run=client -o yaml > nginx_pod.yaml
+   99  nano nginx_pod.yaml 
+  100  kubectl create -f nginx_pod.yaml 
+  101  kubectl get pods
+  102  kubectl describe node eliot-01
+  103  nano nginx_pod.yaml 
+  104  vi nginx_pod.yaml 
+  105  kubectl create -f nginx_pod.yaml 
+  106  kubectl delete nginx
+  107  kubectl delete pods nginx
+  108  kubectl create -f nginx_pod.yaml 
+  109  kubectl get pods
+  110  kubectl describe nginx
+  111  kubectl describe pods nginx
+  112  kubectl expose pod nginx
+  113  kubectl get services
+  114  curl 10.98.78.226
+  115  kubectl describe service nginx
+  116  clear
+  117  kubectl edit service nginx
+  118  kubectl get service
+  119  curl 10.96.0.1:30898
+  120  kubectl get nodes -o wide
+  121  kubectl explain deployment
+  122  kubectl explain services
+  123  kubectl get all
+  124  kubectl delete service nginx
+  125  kubectl get all
+  126  history
+  127  ls
+  128  git status
+  129  git pull origin main
+  130  ls
+  131  mv nginx_pod.yaml day1/
+  132  history > ./day1/eliot-1 
