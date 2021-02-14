@@ -1,0 +1,48 @@
+    1  ls
+    2  htop
+    3  curl -sfSL get.docker.com | bash
+    4  cat > /etc/docker/daemon.json <<EOF
+    5  {
+    6    "exec-opts": ["native.cgroupdriver=systemd"],
+    7    "log-driver": "json-file",
+    8    "log-opts": {
+    9      "max-size": "100m"
+   10    },
+   11    "storage-driver": "overlay2"
+   12  }
+   13  EOF
+   14  apt install jq
+   15  sudo mkdir -p /etc/systemd/system/docker.service.d
+   16  systemctl daemon-reload
+   17  systemctl restart docker
+   18  docker info | grep -i cgroup
+   19  apt-get update && apt-get install -y apt-transport-https gnupg2
+   20  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+   21  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+   22  apt-get update
+   23  apt-get install -y kubelet kubeadm kubectl
+   24  clear
+   25  kubeadm config pull
+   26  kubeadm config images pull
+   27  kubeadm init
+   28  docker version
+   29  htop
+   30  kubeadm init
+   31  mkdir -p $HOME/.kube
+   32  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   33  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   34  id
+   35  id -y
+   36  id -u
+   37  modprobe br_netfilter ip_vs_rr ip_vs_wrr ip_vs_sh nf_conntrack_ipv4 ip_vs
+   38  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+   39  kubectl get pods
+   40  kubectl get pods --all-namespaces
+   41  kubectl get nodes
+   42  kubectl get pods -n kube-system
+   43  kubectl get nodes -o
+   44  kubectl get nodes -o wide
+   45  kubectl get nodes
+   46  cat /proc/cpuinfo 
+   47  ls
+   48  history > eliot-1
