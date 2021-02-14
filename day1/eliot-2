@@ -1,0 +1,32 @@
+    1  sudo apt-get update && sudo apt-get upgrade
+    2  curl
+    3  curl -sfSL get.docker.com | bash
+    4  nano /etc/docker/daemon.json
+    5  cat > /etc/docker/daemon.json <<EOF
+{
+  "exec-opts": ["native.cgroupdriver=systemd"],
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2"
+}
+EOF
+
+    6  jq
+    7  apt-get install jq
+    8  cat /etc/docker/daemon.json | jq
+    9  mkdir --help
+   10  sudo mkdir -p /etc/systemd/system/docker.service.d
+   11  systemctl daemon-reload 
+   12  systemctl restart docker
+   13  docker info | grep -i cgroup
+   14  apt-get update && apt-get install -y apt-transport-https gnupg2
+   15  curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+   16  echo "deb http://apt.kubernetes.io/ kubernetes-xenial main" > /etc/apt/sources.list.d/kubernetes.list
+   17  apt-get update
+   18  apt-get install -y kubelet kubeadm kubectl
+   19  clear
+   20  kubeadm config images pull
+   21  kubeadm join $MASTER_HOST --token $JOIN_TOKEN     --discovery-token-ca-cert-hash sha256: $SHA_256
+   22  history > eliot-2
