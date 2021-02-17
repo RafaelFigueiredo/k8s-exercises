@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: limited-pod
+  labels:
+    name: limited-pod
+spec:
+  containers:
+  - name: limited-pod
+    image: nginx
+    ports:
+      - containerPort: <Port>
